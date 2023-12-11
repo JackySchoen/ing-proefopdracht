@@ -24,7 +24,7 @@ public class Hyena extends Carnivore {
     }
 
     /**
-     * Displays the eatText for animals who eat meat.
+     * Displays the eatText.
      */
     @Override
     public void eatMeat() {

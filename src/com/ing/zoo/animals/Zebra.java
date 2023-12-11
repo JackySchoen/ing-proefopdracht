@@ -29,7 +29,7 @@ public class Zebra extends Herbivore implements Performer {
     }
 
     /**
-     * Displays the eatText for animals who eat leaves.
+     * Displays the eatText.
      */
     @Override
     public void eatLeaves() {

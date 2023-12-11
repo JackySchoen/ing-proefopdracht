@@ -28,7 +28,7 @@ public class Pig extends Omnivore implements Performer {
     }
 
     /**
-     * Displays the eatText for animals who eat leaves.
+     * Displays the eatText.
      */
     @Override
     public void eatLeaves() {
@@ -37,7 +37,7 @@ public class Pig extends Omnivore implements Performer {
     }
 
     /**
-     * Displays the eatText for animals who eat meat.
+     * Displays the eatText.
      */
     @Override
     public void eatMeat() {

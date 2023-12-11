@@ -24,7 +24,7 @@ public class Hippo extends Herbivore {
     }
 
     /**
-     * Displays the eatText for animals who eat leaves.
+     * Displays the eatText.
      */
     @Override
     public void eatLeaves() {

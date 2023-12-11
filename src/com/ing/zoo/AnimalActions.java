@@ -8,8 +8,8 @@ import com.ing.zoo.animals.interfaces.Performer;
 import com.ing.zoo.animals.superclasses.*;
 
 /**
- * I created this class for encapsulation and readability: otherwise the Zoo
- * class would contain all these methods directly.
+ * I created this class for encapsulation and readability of the animals and
+ * their output for each command.
  */
 public class AnimalActions {
     private Map<String, Animal> animals;

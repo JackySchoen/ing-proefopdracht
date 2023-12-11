@@ -29,7 +29,7 @@ public class Tiger extends Carnivore implements Performer {
     }
 
     /**
-     * Displays the eatText for animals who eat meat.
+     * Displays the eatText.
      */
     @Override
     public void eatMeat() {
