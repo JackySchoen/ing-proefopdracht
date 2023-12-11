@@ -3,35 +3,46 @@ package com.ing.zoo;
 import java.util.Scanner;
 
 public class Zoo {
-    public static void main(String[] args)
-    {
+    /**
+     * Runs the Zoo application.
+     * 
+     * @param args an array of arguments.
+     */
+    public static void main(String[] args) {
         String[] commands = new String[4];
         commands[0] = "hello";
         commands[1] = "give leaves";
         commands[2] = "give meat";
         commands[3] = "perform trick";
 
-        Lion henk = new Lion();
-        henk.name = "henk";
-        Hippo elsa = new Hippo();
-        elsa.name = "elsa";
-        Pig dora = new Pig();
-        dora.name = "dora";
-        Tiger wally = new Tiger();
-        wally.name = "wally";
-        Zebra marty = new Zebra();
-        marty.name = "marty";
-
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Voer uw command in: ");
-
+        System.out.print("Enter your command: ");
         String input = scanner.nextLine();
-        if(input.equals(commands[0] + " henk"))
-        {
-            henk.sayHello();
-        }
-        else
-        {
+        checkInput(input, commands);
+
+        scanner.close();
+    }
+
+    /**
+     * Checks which command is provided and prints corresponding output.
+     * 
+     * @param input    the user's input.
+     * @param commands the list with known commands.
+     */
+    private static void checkInput(String input, String[] commands) {
+        AnimalActions actions = new AnimalActions();
+
+        if (input.equals(commands[0])) {
+            actions.allAnimalsSayHello();
+        } else if (input.startsWith(commands[0] + " ")) {
+            actions.specificAnimalSaysHello(input, commands);
+        } else if (input.equals(commands[1])) {
+            actions.giveLeaves();
+        } else if (input.equals(commands[2])) {
+            actions.giveMeat();
+        } else if (input.equals(commands[3])) {
+            actions.performTrick();
+        } else {
             System.out.println("Unknown command: " + input);
         }
     }
