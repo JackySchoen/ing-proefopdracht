@@ -9,5 +9,16 @@ public abstract class Animal {
     protected String helloText;
     protected String eatText;
 
+    /**
+     * Gets the animal's name.
+     * @return the animal's name.  
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Displays the helloText.
+     */
     public abstract void sayHello();
 }

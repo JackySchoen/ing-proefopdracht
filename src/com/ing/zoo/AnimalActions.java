@@ -1,8 +1,5 @@
 package com.ing.zoo;
 
-import java.util.Map;
-import java.util.HashMap;
-
 import com.ing.zoo.animals.*;
 import com.ing.zoo.animals.interfaces.Performer;
 import com.ing.zoo.animals.superclasses.*;
@@ -12,7 +9,7 @@ import com.ing.zoo.animals.superclasses.*;
  * their output for each command.
  */
 public class AnimalActions {
-    private Map<String, Animal> animals;
+    private Animal[] animals;
 
     /**
      * Creates an instance of the AnimalActions class.
@@ -29,15 +26,15 @@ public class AnimalActions {
      * @return a map containing the animals name and the animal instance as
      *         key-value pairs.
      */
-    private Map<String, Animal> getAnimals() {
-        Map<String, Animal> animals = new HashMap<String, Animal>();
-        animals.put("henk", new Lion("henk"));
-        animals.put("elsa", new Hippo("elsa"));
-        animals.put("dora", new Pig("dora"));
-        animals.put("wally", new Tiger("wally"));
-        animals.put("marty", new Zebra("marty"));
-        animals.put("ed", new Hyena("ed"));
-        animals.put("piet", new Giraffe("piet"));
+    private Animal[] getAnimals() {
+        Animal[] animals = new Animal[7];
+        animals[0] = new Lion("henk");
+        animals[1] = new Hippo("elsa");
+        animals[2] = new Pig("dora");
+        animals[3] = new Tiger("wally");
+        animals[4] = new Zebra("marty");
+        animals[5] = new Hyena("ed");
+        animals[6] = new Giraffe("piet");
 
         return animals;
     }
@@ -46,7 +43,7 @@ public class AnimalActions {
      * All animals will display their helloText.
      */
     public void allAnimalsSayHello() {
-        for (Animal animal : animals.values()) {
+        for (Animal animal : animals) {
             animal.sayHello();
         }
     }
@@ -59,11 +56,18 @@ public class AnimalActions {
      */
     public void specificAnimalSaysHello(String input, String[] commands) {
         String animalName = input.substring(commands[0].length() + 1);
-        Animal animal = animals.get(animalName);
-        if (animal == null) {
+        Animal chosenAnimal = null;
+
+        for (Animal animal : animals) {
+            if (animal.getName().equals(animalName)) {
+                chosenAnimal = animal;
+            }
+        }
+
+        if (chosenAnimal == null) {
             System.out.println("Unknown command: " + input);
         } else {
-            animal.sayHello();
+            chosenAnimal.sayHello();
         }
     }
 
@@ -72,7 +76,7 @@ public class AnimalActions {
      * eatText.
      */
     public void giveLeaves() {
-        for (Animal animal : animals.values()) {
+        for (Animal animal : animals) {
             if (animal instanceof Herbivore) {
                 ((Herbivore) animal).eatLeaves();
             } else if (animal instanceof Omnivore) {
@@ -85,7 +89,7 @@ public class AnimalActions {
      * Animals that eat meat (carnivores and omnivores) will display their eatText.
      */
     public void giveMeat() {
-        for (Animal animal : animals.values()) {
+        for (Animal animal : animals) {
             if (animal instanceof Carnivore) {
                 ((Carnivore) animal).eatMeat();
             } else if (animal instanceof Omnivore) {
@@ -98,7 +102,7 @@ public class AnimalActions {
      * Animals that can perform tricks (performers) will display their trick.
      */
     public void performTrick() {
-        for (Animal animal : animals.values()) {
+        for (Animal animal : animals) {
             if (animal instanceof Performer) {
                 ((Performer) animal).performTrick();
             }
